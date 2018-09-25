@@ -10,7 +10,8 @@ class Aluno extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    protected $table = 'alunos';
+    protected $table      = 'alunos';
+    protected $primaryKey = 'aluno_email';
     /**
      * The attributes that are mass assignable.
      *
