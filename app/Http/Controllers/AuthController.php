@@ -6,18 +6,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
     }
 
     /**
-     * Get a JWT via given credentials.
+     * método resposável por realizar a autenticacao,
+     * se credenciais certas ira retornar um token para usar nas requisições
+     * caso contrário retorna http code 401 com mensagem
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -32,17 +29,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function me()
-    {
-        return response()->json(auth()->user());
-    }
-
-    /**
-     * Log the user out (Invalidate the token).
+     * realiza logout do usuario
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -54,7 +41,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Refresh a token.
+     * gera outro token valido para utilizar nas requisicoes
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -64,7 +51,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the token array structure.
+     * retorna informacoes do token gerado
      *
      * @param  string $token
      *

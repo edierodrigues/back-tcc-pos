@@ -1,12 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+// definição das rotas da api
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
+    Route::post('login', 'AuthController@login'); // define rota usada para realizar login via api
+    Route::post('logout', 'AuthController@logout'); // define rota usada para realizar logout via api
 });

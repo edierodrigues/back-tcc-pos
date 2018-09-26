@@ -12,11 +12,7 @@ class Aluno extends Authenticatable implements JWTSubject
 
     protected $table      = 'alunos';
     protected $primaryKey = 'aluno_email';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'aluno_nome',
         'aluno_cpf',
@@ -27,11 +23,6 @@ class Aluno extends Authenticatable implements JWTSubject
         'aluno_senha',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'aluno_senha',
     ];
@@ -56,6 +47,11 @@ class Aluno extends Authenticatable implements JWTSubject
         return [];
     }
 
+    /**
+     * retorna campo com valor que representa a senha
+     *
+     * @return string
+     */
     public function getAuthPassword()
     {
         return $this->aluno_senha;
